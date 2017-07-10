@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity
+
+<p></p>
+
+<a href="/Test/Index">Index</a> |
+<a href="/Test/Public">Public</a> |
+<a href="/Test/Admin">Admin</a> |
+<a href="/Test/Editor">Editor</a> |
+<a href="/Test/AdminOrEditor">Admin Or Editor</a> |
+<a href="/Test/AdminAndEditor">Admin And Editor</a> |
+<a href="/Test/UserIdentity">User</a>
+
+<h2>Test: @ViewBag.Title</h2>
+
+@if (Request.IsAuthenticated)
+{
+    <p>User name: @User.Identity.GetUserName()</p>
+
+    if (User.IsInRole("Editor")) { <p>Role: Editor </p> }
+    if (User.IsInRole("Admin" )) { <p>Role: Admin </p> }
+}
+else
+{
+    <p>Not currently logged in</p>
+}
